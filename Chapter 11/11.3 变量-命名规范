@@ -1,0 +1,6 @@
+a = 10
+b = 20
+a, b = b, a
+print("a is {}, b is {}".format(a, b))
+//a is 20, b is 10
+
