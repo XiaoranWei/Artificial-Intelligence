@@ -1,0 +1,9 @@
+import math
+
+math.pi
+
+math.sin(math.pi/2) //1.0
+
+math.floor(9.23432) //9
+
+math.ceil(9.234322) //10
