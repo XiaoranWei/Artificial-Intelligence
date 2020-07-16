@@ -1,0 +1,8 @@
+random.randint(5,10) //6
+
+np.arange(0,3,2) //array([0,2])
+
+np.linspace(0,3,10) //
+
+#n维的单位矩阵
+
