@@ -1,0 +1,43 @@
+import pandas as pd
+%matplotlib inline
+
+//导入数据
+titanic=pd.read_csv('train.csv')
+//快速预览
+titanic.head()
+titanic.info()
+#把所有数值类型做一个简单的统计
+titanic.describe()
+titanic.head(2)
+#统计none值个数
+titanic.isnull()
+//处理空值
+#填充整个datafrom的空值
+titanic.fullna(0)
+#单独填充
+titanic.Age.fullna(0)
+#年龄的中位数
+titanic.Age.median()
+#按年龄的中位数去填充
+titanic.Age.fillna(titanic.Age.median())
+#直接填充不返回新的series
+titanic.Age.fillna(titanic.Age.median(),inplace=True)
+#再次查看Age的空值
+titanic.isnull().sum()
+//从性别分析
+#汇总统计
+titanic.Sex.value_counts()
+#生还者中 男女的人数
+survived=titanic[titanic.Survied==1].Sex.value_counts()
+#未生还者中 男女的人数
+dead=titanic[titanic.Survied==0].Sex.value_counts()
+#绘图 树状图
+df=pd.DataFrame([survied,dead],index=['survived','dead'])
+df.plot.bar()
+#另一种绘制 行列转换
+df=df.T
+df.plot.bar()
+#叠起来
+df.plot(kind='bar',stacked=True)
+df['p_survived']=df.survived/(df.survived+df.dead)
+df['p_dead']=df.dead/(df.dead+df.survived)
